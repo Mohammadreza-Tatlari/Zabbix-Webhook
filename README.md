@@ -140,3 +140,32 @@ curl -X POST http://(your_IP_address):5000/webhook   -H "Content-Type: applicati
 
 #### This Script webhook is customized to be used in virtual environment and as a Linux Service.
 
+##### To use It as a service:
+1. first create a `.service` file in /etc/systemd/system/ (Ubuntu) for instance:
+```sh
+nano /etc/systemd/system/Zabbix-Webhook.service
+```
+
+then configure the Service followed by:
+```sh
+[Unit]
+Description= Description About your Service
+After=network.target
+
+[Service]
+#User=zabbix  # add user if it needs to be defined in my case not yet
+# WorkingDirectory=
+ExecStart=/usr/bin/python3 /path-to-your-script  # Full path of Executer and Python script is 
+# Add any other necessary environment variables here if needed
+Environment=VAR1=value1
+Environment=VAR2=value2
+
+[Install]
+WantedBy=multi-user.target
+```
+
+then start your your service:
+``` systemctl start Zabbix-Webhook.service ```
+
+or view logs via journalctl:
+```  journalctl -u Zabbix-Webhook.service ```
