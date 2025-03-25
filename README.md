@@ -8,7 +8,7 @@ This application serves as a webhook between Zabbix and Telegram, allowing you t
 4. View notification history
 
 
-![Schema]( "/misc/schema.jpg" "Zabbix Webhook Schema")
+![Schema](/misc/schema.jpg "Zabbix Webhook Schema")
 
 
 ## Setup
