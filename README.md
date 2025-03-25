@@ -7,6 +7,10 @@ This application serves as a webhook between Zabbix and Telegram, allowing you t
 3. Enable/disable notifications via Telegram commands or API endpoints
 4. View notification history
 
+
+![Schema]( './misc/schema.jpg' "Zabbix Webhook Schema")
+
+
 ## Setup
 
 ### Prerequisites
