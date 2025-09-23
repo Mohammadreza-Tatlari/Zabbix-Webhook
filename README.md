@@ -81,7 +81,7 @@ The application will start a Flask server on port 5000 and also run the Telegram
      - Severity: {TRIGGER.SEVERITY}
      - Subject: {ALERT.SUBJECT}
      - To: {ALERT.SENDTO} # which will be the Telegram ID (by default it reads from .env file)
-     - URL: `http://your-server:5000/webhook`
+     - URL: `http://your-server:5000/webhook` (recommended to use User MACRO for defining your URL )
      - HTTP method: POST
      - Content type: application/json
      - Script:
