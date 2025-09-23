@@ -18,14 +18,41 @@ This application serves as a webhook between Zabbix and Telegram, allowing you t
 - Python 3.6+
 - A Telegram bot token (create one via [@BotFather](https://t.me/botfather))
 - A Zabbix server configured to send webhook notifications
-- Flask Package
+
+### This Script webhook is customized to be used in virtual environment and as a Linux Service.
+
+to create virtual environment in order to not break the OS packages, follow these steps (this steps are in Linux Ubuntu OS):
+1. install pip3 packages: </br>
+```
+sudo apt-get install python3-pip
+```
+
+2. install python virtual environment package: </br>
+```
+sudo apt install python3-venv
+```
+
+### Preparing virtual environment
+1. first create your environment with desired name: </br>
+```
+python3 -m venv box
+```
+
+2. activate your environment: </br>
+```
+source box/bin/activate
+``` 
+
+(you can further decativate it via `deactivate` command.)
+
 
 ### Installation
 
-1. Install dependencies:
+1. Install dependencies (in your created environment):
    ```
    pip install -r requirements.txt
    ```
+
 2. Set environment variables:
    ```
    export TELEGRAM_BOT_TOKEN="your_bot_token"
@@ -142,7 +169,6 @@ curl -X POST http://(your_IP_address):5000/webhook   -H "Content-Type: applicati
    ```
 6. Add another template for recovery operations with appropriate subject and message 
 
-#### This Script webhook is customized to be used in virtual environment and as a Linux Service.
 
 ##### To use It as a service:
 1. first create a `.service` file in /etc/systemd/system/ (Ubuntu) for instance:
@@ -159,7 +185,7 @@ After=network.target
 [Service]
 #User=zabbix  # add user if it needs to be defined in my case not yet
 # WorkingDirectory=
-ExecStart=/usr/bin/python3 /path-to-your-script  # Full path of Executer and Python script is 
+ExecStart=/your-path-to-venv-python/box/bin/python yourpath-to-telegram-webhook/zabbix_webhook.py  # Full path of Executer and Python script is 
 # Add any other necessary environment variables here if needed
 Environment=VAR1=value1
 Environment=VAR2=value2
