@@ -19,9 +19,9 @@ This application serves as a webhook between Zabbix and Telegram, allowing you t
 - A Telegram bot token (create one via [@BotFather](https://t.me/botfather))
 - A Zabbix server configured to send webhook notifications
 
-### This Script webhook is customized to be used in virtual environment and as a Linux Service.
+### This Script webhook is customized to be used in a virtual environment and as a Linux Service.
 
-to create virtual environment in order to not break the OS packages, follow these steps (this steps are in Linux Ubuntu OS):
+To create a virtual environment in order not to break the OS packages, follow these steps (these steps are in Linux Ubuntu OS):
 1. install pip3 packages: </br>
 ```
 sudo apt-get install python3-pip
@@ -33,7 +33,7 @@ sudo apt install python3-venv
 ```
 
 ### Preparing virtual environment
-1. first create your environment with desired name: </br>
+1. First, create your environment with the desired name: </br>
 ```
 python3 -m venv box
 ```
@@ -43,7 +43,7 @@ python3 -m venv box
 source box/bin/activate
 ``` 
 
-(you can further decativate it via `deactivate` command.)
+(You can further deactivate it via the `deactivate` command.)
 
 
 ### Installation
@@ -59,7 +59,7 @@ source box/bin/activate
    export TELEGRAM_CHAT_ID="your_default_chat_id"
    ```
    
-   Alternatively, you can set these directly in the `zabbix_webhook.py` file.
+   It is recommended to set these directly in the `.env` file.
 
 ### Running the Application
 
@@ -85,7 +85,7 @@ The application will start a Flask server on port 5000 and also run the Telegram
      - HTTP method: POST
      - Content type: application/json
      - Script:
-        ```javascript
+        ```javaScript
             var params = JSON.parse(value);
 
             var request = new HttpRequest();
@@ -125,7 +125,7 @@ The application will start a Flask server on port 5000 and also run the Telegram
         ```
 
 4. Create a new action in Zabbix and assign this media type to it.
-5. assign the Media Type to Proper User.
+5. Assign the Media Type to the Proper User.
 
 
 ## Telegram Bot Commands
@@ -167,16 +167,16 @@ curl -X POST http://(your_IP_address):5000/webhook   -H "Content-Type: applicati
    Original problem ID: {EVENT.ID}
    {TRIGGER.URL}
    ```
-6. Add another template for recovery operations with appropriate subject and message 
+6. Add another template for recovery operations with an appropriate subject and message 
 
 
-##### To use It as a service:
-1. first create a `.service` file in /etc/systemd/system/ (Ubuntu) for instance:
+##### To use it as a service:
+1. First create a `.service` file in /etc/systemd/system/ (Ubuntu), for instance:
 ```sh
 nano /etc/systemd/system/Zabbix-Webhook.service
 ```
 
-then configure the Service followed by:
+Then configure the Service, followed by:
 ```sh
 [Unit]
 Description= Description About your Service
@@ -194,7 +194,7 @@ Environment=VAR2=value2
 WantedBy=multi-user.target
 ```
 
-then start your your service:
+Then start your service:
 ``` systemctl start Zabbix-Webhook.service ```
 
 or view logs via journalctl:
